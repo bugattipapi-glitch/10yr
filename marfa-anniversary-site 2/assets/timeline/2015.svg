@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 260">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#142b3d"/><stop offset="1" stop-color="#4d738a"/></linearGradient>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 .12 0"/></filter>
+</defs>
+<rect width="360" height="260" rx="10" fill="url(#sky)"/>
+<circle cx="241" cy="58" r="31" fill="#cf6c4c" opacity=".9"/>
+<g fill="#fff6d9" opacity=".8"><circle cx="42" cy="39" r="2"/><circle cx="111" cy="72" r="1.5"/><circle cx="184" cy="35" r="2"/><circle cx="306" cy="92" r="1.6"/><circle cx="242" cy="112" r="1.2"/></g>
+<path d="M0 171 44 143 82 161 137 126 194 166 247 137 309 156 360 130v130H0z" fill="#201522" opacity=".88"/>
+<path d="M0 205c72-27 123 7 181-13 67-22 122 7 179-16v84H0z" fill="#0b1420"/>
+<g transform="translate(99 144)" fill="#1a3f3a"><rect x="18" y="16" width="12" height="76" rx="6"/><rect x="2" y="35" width="24" height="11" rx="5"/><rect x="4" y="35" width="10" height="29" rx="5"/><rect x="24" y="48" width="25" height="11" rx="5"/><rect x="39" y="28" width="10" height="31" rx="5"/></g>
+<rect width="360" height="260" rx="10" filter="url(#grain)" opacity=".35"/>
+<text x="180" y="224" text-anchor="middle" fill="#fff3d1" font-family="Georgia,serif" font-size="18" font-style="italic">Photo placeholder</text>
+</svg>

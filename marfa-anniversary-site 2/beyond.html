@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080713" />
+    <meta name="description" content="A secret Marfa-themed crossing game for Megan and Jason's tenth anniversary." />
+    <title>Beyond | The Marfa Crossing</title>
+
+    <script>
+      document.documentElement.classList.replace("no-js", "js");
+    </script>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Nunito+Sans:wght@400;600;700;800&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="assets/game/jeep-sprite.png" />
+    <link rel="preload" as="image" href="assets/game/roadrunner-sprite.png" />
+    <link rel="preload" as="image" href="assets/game/tornado-sprite.png" />
+    <link rel="preload" as="image" href="assets/game/hotdog.svg" />
+    <link rel="stylesheet" href="game.css" />
+    <script src="game.js" defer></script>
+  </head>
+
+  <body>
+    <div class="game-sky" aria-hidden="true"></div>
+
+    <a class="game-back" href="index.html#timeline-title">
+      <span aria-hidden="true">←</span>
+      Back to the anniversary
+    </a>
+
+    <main class="game-page">
+      <header class="game-heading">
+        <p class="game-kicker">You found Beyond</p>
+        <h1>The Marfa Crossing</h1>
+        <p>
+          Get the red Jeep from Valentine to Marfa Spirit Co. without being sideswiped by
+          roadrunners, tornadoes, or suspiciously mobile hot dogs.
+        </p>
+      </header>
+
+      <section class="game-console" aria-labelledby="game-instructions">
+        <div class="game-statusbar">
+          <p id="gameStatus" aria-live="polite">Ready for a very West Texas commute.</p>
+          <p><span>Bumps:</span> <strong id="bumpCount">0</strong></p>
+        </div>
+
+        <div class="game-board" id="gameBoard">
+          <canvas
+            id="gameCanvas"
+            tabindex="0"
+            aria-label="A three-lane road-crossing game. Move the red Jeep from the Valentine side on the left to Marfa Spirit Co. on the right while avoiding obstacles."
+          ></canvas>
+
+          <figure class="game-landmark game-landmark--valentine" aria-label="Megan at the Valentine city limit sign">
+            <img src="assets/game/valentine-cutout.png" alt="Megan holding the Valentine, Texas city limit sign" width="304" height="602" />
+          </figure>
+
+          <figure class="game-landmark game-landmark--spirit" aria-label="Marfa Spirit Company">
+            <img src="assets/game/marfa-spirit.webp" alt="The Marfa Spirit Co. distillery and bar sign" width="744" height="592" />
+            <figcaption>Marfa Spirit Co.</figcaption>
+          </figure>
+
+          <div class="game-overlay game-overlay--start" id="startOverlay">
+            <div class="overlay-card">
+              <span class="overlay-spark" aria-hidden="true">✦</span>
+              <p class="overlay-eyebrow">A secret anniversary detour</p>
+              <h2>Cross three lanes of Marfa weirdness.</h2>
+              <p>Use the arrow keys or WASD. On a phone, use the controls below.</p>
+              <button id="startGame" type="button">Start crossing</button>
+            </div>
+          </div>
+
+          <div class="game-overlay game-overlay--win" id="winOverlay" hidden>
+            <div class="overlay-card">
+              <span class="overlay-spark" aria-hidden="true">✦</span>
+              <p class="overlay-eyebrow">You made it</p>
+              <h2>Beyond looks pretty good.</h2>
+              <p>The Jeep survived. The hot dogs have been humbled. Marfa Spirit Co. awaits.</p>
+              <div class="overlay-actions">
+                <button id="playAgain" type="button">Cross again</button>
+                <a href="index.html#timeline-title">Back to the timeline</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="collision-flash" id="collisionFlash" aria-hidden="true"></div>
+        </div>
+
+        <div class="game-controls" aria-label="Touch controls">
+          <button class="control control--up" type="button" data-direction="up" aria-label="Move up">↑</button>
+          <button class="control control--left" type="button" data-direction="left" aria-label="Move left">←</button>
+          <button class="control control--down" type="button" data-direction="down" aria-label="Move down">↓</button>
+          <button class="control control--right" type="button" data-direction="right" aria-label="Move right">→</button>
+        </div>
+
+        <p class="game-instructions" id="game-instructions">
+          <strong>Goal:</strong> cross from the left sidewalk to the right sidewalk.
+          Collisions send the Jeep back to Valentine. The sidewalks are safe; the road is not.
+        </p>
+      </section>
+    </main>
+
+    <footer class="game-footer">
+      <p>Game photographs and character artwork supplied by Megan and Jason.</p>
+    </footer>
+  </body>
+</html>

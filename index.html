@@ -146,7 +146,10 @@
               data-enter-rotation="8"
               data-rotation="1.8"
             >
-              <img src="assets/landmarks/teepees.webp" alt="" width="736" height="322" decoding="async" />
+              <picture>
+                <source media="(min-width: 1051px)" srcset="assets/landmarks/teepees-desktop.webp" />
+                <img src="assets/landmarks/teepees.webp" alt="" width="736" height="322" decoding="async" />
+              </picture>
             </figure>
 
             <figure
@@ -197,7 +200,7 @@
               <p>
                 On December 17—the actual anniversary—we’re planning a small, private renewal of vows.
                 Beyond that, the official itinerary is intentionally unambitious: be in Marfa, take it slow,
-                look at art, eat something good, and celebrate the fact that we still choose each other.
+                look at art, eat something good, drink some Marfa Margs, and celebrate the fact that we still choose each other.
               </p>
             </div>
             <span class="plan-card__sparkle" aria-hidden="true">✦</span>
@@ -234,7 +237,7 @@
                 <span aria-hidden="true">✦</span>
               </p>
               <h2 id="timeline-title">The Bensons in Marfa over the years</h2>
-              <p>Hover over a star—or tap it—to reveal a photo. Real memories are coming next.</p>
+              <p>Hover over a star—or tap it—to fan out a few memories.</p>
             </div>
 
             <div class="timeline-scroll" aria-label="Timeline from 2013 through Beyond">
@@ -244,70 +247,217 @@
                 </div>
 
                 <ol class="timeline-list">
-                  <li class="timeline-item timeline-item--above" style="--card-tilt: -3deg;">
-                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-2013">
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-1" aria-label="Open Marfa memory chapter 1">
                       <span class="timeline-dot" aria-hidden="true"></span>
                       <span class="timeline-year">2013</span>
                     </button>
-                    <figure class="memory-card" id="memory-2013" aria-hidden="true">
-                      <img src="assets/timeline/2013.svg" alt="Placeholder for a 2013 Marfa photo" width="360" height="260" />
-                      <figcaption>2013 · photo coming soon</figcaption>
-                    </figure>
+                    <div class="memory-fan" id="memory-group-1" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6755.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 1" width="960" height="720" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6756.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 1" width="960" height="720" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6757.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 1" width="720" height="960" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6759.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 1" width="640" height="480" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6760.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 1" width="960" height="720" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
                   </li>
 
-                  <li class="timeline-item timeline-item--below" style="--card-tilt: 2deg;">
-                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-2015">
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-2" aria-label="Open Marfa memory chapter 2">
                       <span class="timeline-dot" aria-hidden="true"></span>
-                      <span class="timeline-year">2015</span>
+                      
                     </button>
-                    <figure class="memory-card" id="memory-2015" aria-hidden="true">
-                      <img src="assets/timeline/2015.svg" alt="Placeholder for a 2015 Marfa photo" width="360" height="260" />
-                      <figcaption>2015 · photo coming soon</figcaption>
-                    </figure>
+                    <div class="memory-fan" id="memory-group-2" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6761.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 2" width="1100" height="825" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6766.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 2" width="1100" height="825" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6769.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 2" width="1100" height="825" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6771.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 2" width="720" height="960" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6772.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 2" width="960" height="642" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
                   </li>
 
-                  <li class="timeline-item timeline-item--above" style="--card-tilt: 3.5deg;">
-                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-2016">
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-3" aria-label="Open Marfa memory chapter 3">
                       <span class="timeline-dot" aria-hidden="true"></span>
-                      <span class="timeline-year">2016</span>
+                      
                     </button>
-                    <figure class="memory-card" id="memory-2016" aria-hidden="true">
-                      <img src="assets/timeline/2016.svg" alt="Placeholder for a 2016 Marfa photo" width="360" height="260" />
-                      <figcaption>2016 · photo coming soon</figcaption>
-                    </figure>
+                    <div class="memory-fan" id="memory-group-3" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6773.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 3" width="720" height="960" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6774.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 3" width="960" height="720" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6776.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 3" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6780.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 3" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6781.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 3" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
                   </li>
 
-                  <li class="timeline-item timeline-item--below" style="--card-tilt: -2.5deg;">
-                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-2022">
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-4" aria-label="Open Marfa memory chapter 4">
                       <span class="timeline-dot" aria-hidden="true"></span>
-                      <span class="timeline-year">2022</span>
+                      
                     </button>
-                    <figure class="memory-card" id="memory-2022" aria-hidden="true">
-                      <img src="assets/timeline/2022.svg" alt="Placeholder for a 2022 Marfa photo" width="360" height="260" />
-                      <figcaption>2022 · photo coming soon</figcaption>
-                    </figure>
+                    <div class="memory-fan" id="memory-group-4" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6782.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 4" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6784.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 4" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6786.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 4" width="960" height="720" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6787.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 4" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6788.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 4" width="720" height="960" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
                   </li>
 
-                  <li class="timeline-item timeline-item--above" style="--card-tilt: -1.5deg;">
-                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-2023">
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-5" aria-label="Open Marfa memory chapter 5">
                       <span class="timeline-dot" aria-hidden="true"></span>
-                      <span class="timeline-year">2023</span>
+                      <span class="timeline-year">2020</span>
                     </button>
-                    <figure class="memory-card" id="memory-2023" aria-hidden="true">
-                      <img src="assets/timeline/2023.svg" alt="Placeholder for a 2023 Marfa photo" width="360" height="260" />
-                      <figcaption>2023 · photo coming soon</figcaption>
-                    </figure>
+                    <div class="memory-fan" id="memory-group-5" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6789.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 5" width="720" height="960" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6792.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 5" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6793.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 5" width="1100" height="825" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6794.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 5" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6795.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 5" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
                   </li>
 
-                  <li class="timeline-item timeline-item--below" style="--card-tilt: 3deg;">
-                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-2024">
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-6" aria-label="Open Marfa memory chapter 6">
                       <span class="timeline-dot" aria-hidden="true"></span>
-                      <span class="timeline-year">2024</span>
+                      
                     </button>
-                    <figure class="memory-card" id="memory-2024" aria-hidden="true">
-                      <img src="assets/timeline/2024.svg" alt="Placeholder for a 2024 Marfa photo" width="360" height="260" />
-                      <figcaption>2024 · photo coming soon</figcaption>
-                    </figure>
+                    <div class="memory-fan" id="memory-group-6" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6796.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 6" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6797.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 6" width="720" height="960" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6798.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 6" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6799.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 6" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6800.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 6" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
+                  </li>
+
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-7" aria-label="Open Marfa memory chapter 7">
+                      <span class="timeline-dot" aria-hidden="true"></span>
+                      
+                    </button>
+                    <div class="memory-fan" id="memory-group-7" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6801.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 7" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6802.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 7" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6804.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 7" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6805.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 7" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6806.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 7" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
+                  </li>
+
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-8" aria-label="Open Marfa memory chapter 8">
+                      <span class="timeline-dot" aria-hidden="true"></span>
+                      
+                    </button>
+                    <div class="memory-fan" id="memory-group-8" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -158px; --fan-y: -16px; --fan-rotate: -17deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6808.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 8" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: -80px; --fan-y: -92px; --fan-rotate: -9deg; --fan-delay: 45ms;">
+                        <img src="assets/timeline/img_6809.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 8" width="1100" height="825" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--landscape" style="--fan-x: 0px; --fan-y: -126px; --fan-rotate: 0deg; --fan-delay: 90ms;">
+                        <img src="assets/timeline/img_6811.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 8" width="1100" height="825" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 80px; --fan-y: -92px; --fan-rotate: 9deg; --fan-delay: 135ms;">
+                        <img src="assets/timeline/img_6812.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 8" width="880" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 158px; --fan-y: -16px; --fan-rotate: 17deg; --fan-delay: 180ms;">
+                        <img src="assets/timeline/img_6814.webp" alt="A Benson family memory in Marfa, photo 5 of chapter 8" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
+                  </li>
+
+                  <li class="timeline-item" data-timeline-item>
+                    <button class="timeline-point" type="button" data-timeline-toggle aria-expanded="false" aria-controls="memory-group-9" aria-label="Open Marfa memory chapter 9">
+                      <span class="timeline-dot" aria-hidden="true"></span>
+                      
+                    </button>
+                    <div class="memory-fan" id="memory-group-9" aria-hidden="true">
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -126px; --fan-y: -46px; --fan-rotate: -14deg; --fan-delay: 0ms;">
+                        <img src="assets/timeline/img_6815.webp" alt="A Benson family memory in Marfa, photo 1 of chapter 9" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: -43px; --fan-y: -113px; --fan-rotate: -5deg; --fan-delay: 55ms;">
+                        <img src="assets/timeline/img_6817.webp" alt="A Benson family memory in Marfa, photo 2 of chapter 9" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 43px; --fan-y: -113px; --fan-rotate: 5deg; --fan-delay: 110ms;">
+                        <img src="assets/timeline/img_6818.webp" alt="A Benson family memory in Marfa, photo 3 of chapter 9" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                      <figure class="memory-photo memory-photo--portrait" style="--fan-x: 126px; --fan-y: -46px; --fan-rotate: 14deg; --fan-delay: 165ms;">
+                        <img src="assets/timeline/img_6819.webp" alt="A Benson family memory in Marfa, photo 4 of chapter 9" width="825" height="1100" loading="lazy" decoding="async" />
+                      </figure>
+                    </div>
                   </li>
 
                   <li class="timeline-item timeline-item--beyond">
@@ -316,7 +466,7 @@
                       <span class="timeline-year">Beyond</span>
                       <span class="timeline-secret" aria-hidden="true">✦</span>
                     </a>
-                    <div class="memory-card memory-card--secret" aria-hidden="true">
+                    <div class="memory-secret-card" aria-hidden="true">
                       <span class="secret-sparkle">✦</span>
                       <strong>Something strange is down this road.</strong>
                       <small>Click Beyond to find out.</small>

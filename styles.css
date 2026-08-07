@@ -575,6 +575,7 @@ img {
   opacity: 1;
 }
 
+.landmark picture,
 .landmark img {
   display: block;
   width: 100%;
@@ -1091,10 +1092,15 @@ img {
 /* -------------------------------------------------------------------------- */
 
 .timeline-section {
+  position: relative;
+  z-index: 6;
   padding: clamp(6.5rem, 12vw, 10rem) 0 clamp(5rem, 9vw, 7.5rem);
+  overflow: visible;
 }
 
 .timeline-heading {
+  position: relative;
+  z-index: 30;
   max-width: 920px;
   text-align: center;
 }
@@ -1122,14 +1128,17 @@ img {
 }
 
 .timeline-scroll {
+  position: relative;
+  z-index: 8;
   width: 100%;
-  margin-top: clamp(2rem, 5vw, 4rem);
-  padding-inline: max(1rem, calc((100vw - 1250px) / 2));
+  margin-top: clamp(0.5rem, 2vw, 1.5rem);
+  padding-inline: max(1rem, calc((100vw - 1540px) / 2));
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: rgba(240, 206, 134, 0.42) transparent;
   overscroll-behavior-inline: contain;
+  scroll-padding-inline: 230px;
 }
 
 .timeline-scroll::-webkit-scrollbar {
@@ -1141,18 +1150,20 @@ img {
   border-radius: 999px;
 }
 
+/* The generous height keeps every opened fan inside the scroll container, so
+   the photographs never get clipped by the heading or the section above. */
 .timeline-track {
   position: relative;
-  width: max(100%, 1120px);
-  height: 440px;
-  padding-inline: 92px;
+  width: max(100%, 1640px);
+  height: 720px;
+  padding-inline: 255px;
 }
 
 .timeline-wand {
   position: absolute;
-  top: 50%;
-  right: 78px;
-  left: 78px;
+  top: 58%;
+  right: 235px;
+  left: 235px;
   height: 4px;
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(149, 100, 45, 0.2), #d9a948 12%, #ffe39a 50%, #d7a447 88%, rgba(149, 100, 45, 0.24));
@@ -1252,7 +1263,7 @@ img {
 
 .timeline-list {
   position: absolute;
-  inset: 0 62px;
+  inset: 0 255px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1263,15 +1274,20 @@ img {
 
 .timeline-item {
   position: relative;
-  width: 106px;
+  z-index: 4;
+  width: 96px;
   height: 100%;
-  flex: 0 0 106px;
+  flex: 0 0 96px;
+}
+
+.timeline-item.is-open {
+  z-index: 25;
 }
 
 .timeline-point {
   position: absolute;
-  z-index: 5;
-  top: 50%;
+  z-index: 12;
+  top: 58%;
   left: 50%;
   display: grid;
   min-width: 88px;
@@ -1334,9 +1350,9 @@ img {
   white-space: nowrap;
 }
 
-.timeline-item:hover .timeline-dot,
-.timeline-item:focus-within .timeline-dot,
-.timeline-item.is-open .timeline-dot {
+.timeline-item.is-open .timeline-dot,
+.timeline-point:hover .timeline-dot,
+.timeline-point:focus-visible .timeline-dot {
   background: #ffe6a1;
   box-shadow:
     0 0 0 7px rgba(240, 206, 134, 0.13),
@@ -1345,93 +1361,123 @@ img {
   transform: rotate(45deg) scale(1.22);
 }
 
-.timeline-item:hover .timeline-dot::before,
-.timeline-item:hover .timeline-dot::after,
-.timeline-item:focus-within .timeline-dot::before,
-.timeline-item:focus-within .timeline-dot::after,
 .timeline-item.is-open .timeline-dot::before,
-.timeline-item.is-open .timeline-dot::after {
+.timeline-item.is-open .timeline-dot::after,
+.timeline-point:hover .timeline-dot::before,
+.timeline-point:hover .timeline-dot::after,
+.timeline-point:focus-visible .timeline-dot::before,
+.timeline-point:focus-visible .timeline-dot::after {
   opacity: 1;
 }
 
-.memory-card {
+.memory-fan {
   position: absolute;
-  z-index: 7;
+  z-index: 8;
+  inset: 0;
+  pointer-events: none;
+}
+
+.memory-photo {
+  position: absolute;
+  top: 58%;
   left: 50%;
-  width: 196px;
+  width: 150px;
   margin: 0;
-  padding: 9px 9px 15px;
+  padding: 7px 7px 10px;
   color: var(--ink);
   background: #f2e2c4;
   box-shadow:
-    0 18px 35px rgba(0, 0, 0, 0.38),
+    0 18px 35px rgba(0, 0, 0, 0.42),
     0 0 0 1px rgba(85, 52, 59, 0.15);
   opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 250ms ease,
-    transform 420ms var(--ease-out);
+  transform: translate(-50%, -54%) rotate(0deg) scale(0.34);
   transform-origin: center bottom;
+  transition:
+    opacity 220ms ease var(--fan-delay),
+    transform 480ms var(--ease-out) var(--fan-delay),
+    filter 180ms ease;
 }
 
-.memory-card::before {
+.memory-photo--portrait {
+  width: 128px;
+}
+
+.memory-photo--landscape {
+  width: 166px;
+}
+
+.memory-photo--square {
+  width: 146px;
+}
+
+.memory-photo::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -7px;
+  left: 50%;
+  width: 42px;
+  height: 15px;
+  background: rgba(232, 209, 162, 0.72);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.memory-photo:nth-child(even)::before {
+  transform: translateX(-50%) rotate(4deg);
+}
+
+.memory-photo::after {
   content: "";
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
-  opacity: 0.13;
+  opacity: 0.12;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
 
-.memory-card img {
+.memory-photo img {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
-  aspect-ratio: 1.38;
-  object-fit: cover;
+  height: auto;
   border: 1px solid rgba(91, 61, 66, 0.18);
+  background: #e5d3b5;
 }
 
-.memory-card figcaption {
-  margin-top: 0.62rem;
-  color: #664954;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.95rem;
-  font-style: italic;
-  text-align: center;
+.memory-photo:nth-child(1) {
+  z-index: 2;
 }
 
-.timeline-item--above .memory-card,
-.timeline-item--beyond .memory-card {
-  top: calc(50% - 48px);
-  transform: translate(-50%, calc(-100% + 22px)) rotate(var(--card-tilt, -2deg)) scale(0.76);
-  transform-origin: center bottom;
+.memory-photo:nth-child(2) {
+  z-index: 3;
 }
 
-.timeline-item--below .memory-card {
-  top: calc(50% + 48px);
-  transform: translate(-50%, -18px) rotate(var(--card-tilt, 2deg)) scale(0.76);
-  transform-origin: center top;
+.memory-photo:nth-child(3) {
+  z-index: 6;
 }
 
-.timeline-item:hover .memory-card,
-.timeline-item:focus-within .memory-card,
-.timeline-item.is-open .memory-card {
+.memory-photo:nth-child(4) {
+  z-index: 5;
+}
+
+.memory-photo:nth-child(5) {
+  z-index: 4;
+}
+
+.timeline-item.is-open .memory-photo,
+.no-js .timeline-item:hover .memory-photo,
+.no-js .timeline-item:focus-within .memory-photo {
   opacity: 1;
+  pointer-events: auto;
+  transform: translate(calc(-50% + var(--fan-x)), calc(-100% + var(--fan-y))) rotate(var(--fan-rotate)) scale(1);
 }
 
-.timeline-item--above:hover .memory-card,
-.timeline-item--above:focus-within .memory-card,
-.timeline-item--above.is-open .memory-card,
-.timeline-item--beyond:hover .memory-card,
-.timeline-item--beyond:focus-within .memory-card {
-  transform: translate(-50%, -100%) rotate(var(--card-tilt, -2deg)) scale(1);
-}
-
-.timeline-item--below:hover .memory-card,
-.timeline-item--below:focus-within .memory-card,
-.timeline-item--below.is-open .memory-card {
-  transform: translate(-50%, 0) rotate(var(--card-tilt, 2deg)) scale(1);
+.timeline-item.is-open .memory-photo:hover {
+  z-index: 20;
+  filter: brightness(1.04);
 }
 
 .timeline-point--beyond .timeline-dot {
@@ -1468,26 +1514,46 @@ img {
   }
 }
 
-.memory-card--secret {
+.memory-secret-card {
+  position: absolute;
+  z-index: 8;
+  top: 58%;
+  left: 50%;
   display: grid;
+  width: 196px;
   min-height: 150px;
   place-content: center;
   gap: 0.55rem;
+  padding: 1.1rem;
   color: var(--white);
   border: 1px solid rgba(244, 211, 139, 0.38);
   background:
     radial-gradient(circle at 50% 30%, rgba(239, 202, 125, 0.19), transparent 30%),
     #1c1424;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.38);
+  opacity: 0;
+  pointer-events: none;
   text-align: center;
+  transform: translate(-50%, calc(-100% - 40px)) rotate(-2deg) scale(0.78);
+  transform-origin: center bottom;
+  transition:
+    opacity 240ms ease,
+    transform 420ms var(--ease-out);
 }
 
-.memory-card--secret strong {
+.timeline-item--beyond:hover .memory-secret-card,
+.timeline-item--beyond:focus-within .memory-secret-card {
+  opacity: 1;
+  transform: translate(-50%, calc(-100% - 58px)) rotate(-2deg) scale(1);
+}
+
+.memory-secret-card strong {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.2rem;
   line-height: 1.08;
 }
 
-.memory-card--secret small {
+.memory-secret-card small {
   color: rgba(255, 245, 228, 0.64);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
@@ -1501,7 +1567,7 @@ img {
 
 .timeline-swipe-hint {
   display: none;
-  margin: 0.5rem 1.2rem 0;
+  margin: -0.5rem 1.2rem 0;
   color: rgba(255, 245, 229, 0.47);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
@@ -1608,6 +1674,24 @@ img {
 .js [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+/* Desktop-only collage refinement: keep the teepees together at the far right
+   and tuck the courthouse just to the right of the Stardust sign. */
+@media (min-width: 1051px) {
+  .landmark--courthouse {
+    right: auto;
+    bottom: -7%;
+    left: 25.2%;
+    width: clamp(250px, 20.5vw, 365px);
+  }
+
+  .landmark--teepees {
+    right: -0.5%;
+    bottom: -5%;
+    width: clamp(360px, 29vw, 515px);
+  }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1766,8 +1850,8 @@ img {
   }
 
   .timeline-track {
-    width: 1040px;
-    height: 420px;
+    width: 1580px;
+    height: 680px;
   }
 
   .timeline-scroll {
@@ -1828,8 +1912,16 @@ img {
     font-size: clamp(2.7rem, 13vw, 4.6rem);
   }
 
-  .memory-card {
-    width: 178px;
+  .memory-photo--portrait {
+    width: 116px;
+  }
+
+  .memory-photo--landscape {
+    width: 150px;
+  }
+
+  .memory-photo--square {
+    width: 134px;
   }
 }
 

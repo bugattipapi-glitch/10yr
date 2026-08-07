@@ -46,7 +46,13 @@
       <section class="game-console" aria-labelledby="game-instructions">
         <div class="game-statusbar">
           <p id="gameStatus" aria-live="polite">Ready for a very West Texas commute.</p>
-          <p><span>Bumps:</span> <strong id="bumpCount">0</strong></p>
+          <div class="game-status-actions">
+            <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false">
+              <span class="music-toggle__note" aria-hidden="true">♪</span>
+              <span id="musicLabel">Music: off</span>
+            </button>
+            <p class="bump-display"><span>Bumps:</span> <strong id="bumpCount">0</strong></p>
+          </div>
         </div>
 
         <div class="game-board" id="gameBoard">
@@ -105,8 +111,14 @@
       </section>
     </main>
 
+    <audio id="gameMusic" loop preload="metadata">
+      <source src="assets/audio/desert-detour.ogg" type="audio/ogg" />
+      <source src="assets/audio/desert-detour.mp3" type="audio/mpeg" />
+    </audio>
+
     <footer class="game-footer">
       <p>Game photographs and character artwork supplied by Megan and Jason.</p>
+      <p>Music: “Desert Detour,” an original royalty-free instrumental created for this site.</p>
     </footer>
   </body>
 </html>

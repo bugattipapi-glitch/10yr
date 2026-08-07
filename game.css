@@ -197,7 +197,15 @@ button {
   line-height: 1.45;
 }
 
-.game-statusbar p:last-child {
+.game-status-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.58rem;
+  flex: 0 0 auto;
+}
+
+.bump-display {
   flex: 0 0 auto;
   padding: 0.52rem 0.76rem;
   color: var(--gold-bright);
@@ -208,6 +216,57 @@ button {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.music-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  min-height: 35px;
+  padding: 0.5rem 0.72rem;
+  color: rgba(255, 245, 228, 0.7);
+  border: 1px solid rgba(240, 206, 134, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  cursor: pointer;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible,
+.music-toggle[aria-pressed="true"] {
+  color: var(--gold-bright);
+  border-color: rgba(240, 206, 134, 0.64);
+  background: rgba(240, 206, 134, 0.11);
+}
+
+.music-toggle:active {
+  transform: translateY(1px);
+}
+
+.music-toggle__note {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 0.7;
+}
+
+.music-toggle[aria-pressed="true"] .music-toggle__note {
+  animation: music-note-bob 1.7s ease-in-out infinite;
+}
+
+@keyframes music-note-bob {
+  50% {
+    transform: translateY(-2px) rotate(-8deg);
+  }
 }
 
 .game-statusbar strong {
@@ -536,6 +595,13 @@ button {
   margin: 0;
 }
 
+.game-footer p + p {
+  margin-top: 0.45rem;
+  color: rgba(255, 245, 231, 0.44);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
 @media (min-width: 980px) and (pointer: fine) {
   .game-controls {
     display: none;
@@ -590,7 +656,18 @@ button {
     padding-inline: 0.45rem;
   }
 
-  .game-statusbar p:last-child {
+  .game-status-actions {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .music-toggle {
+    min-height: 32px;
+    padding: 0.43rem 0.6rem;
+    font-size: 0.53rem;
+  }
+
+  .bump-display {
     font-size: 0.54rem;
   }
 
@@ -631,7 +708,11 @@ button {
     display: grid;
   }
 
-  .game-statusbar p:last-child {
+  .game-status-actions {
+    justify-content: start;
+  }
+
+  .bump-display {
     width: max-content;
   }
 

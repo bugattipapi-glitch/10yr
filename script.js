@@ -230,56 +230,85 @@
 
   function setTimelineOpen(item, isOpen) {
     const button = item.querySelector("[data-timeline-toggle]");
-    const card = item.querySelector(".memory-card");
+    const fan = item.querySelector(".memory-fan");
     item.classList.toggle("is-open", isOpen);
     button?.setAttribute("aria-expanded", String(isOpen));
-    card?.setAttribute("aria-hidden", String(!isOpen));
+    fan?.setAttribute("aria-hidden", String(!isOpen));
   }
 
   function bindTimeline() {
-    timelineButtons.forEach((button) => {
-      const item = button.closest(".timeline-item");
-      if (!item) return;
+    const items = [...document.querySelectorAll("[data-timeline-item]")];
+    const hoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)");
 
-      // A tap focuses a button before its click event fires. Remember when the
-      // focus handler opened the card so that the same tap does not immediately
-      // toggle it closed again.
-      let openedOnFocus = false;
+    function closeItem(item) {
+      item.dataset.clickedOpen = "false";
+      item.dataset.suppressHover = "false";
+      setTimelineOpen(item, false);
+    }
+
+    function closeOthers(currentItem) {
+      items.forEach((item) => {
+        if (item !== currentItem) closeItem(item);
+      });
+    }
+
+    items.forEach((item) => {
+      const button = item.querySelector("[data-timeline-toggle]");
+      if (!button) return;
+
+      item.dataset.clickedOpen = "false";
+      item.dataset.suppressHover = "false";
+
+      item.addEventListener("pointerenter", () => {
+        if (!hoverCapable.matches || item.dataset.suppressHover === "true") return;
+        closeOthers(item);
+        setTimelineOpen(item, true);
+      });
+
+      item.addEventListener("pointerleave", () => {
+        if (!hoverCapable.matches) return;
+        // Mouse-out always puts the photographs away, even if the dot was clicked.
+        closeItem(item);
+      });
 
       button.addEventListener("focus", () => {
-        if (!item.classList.contains("is-open")) {
-          document.querySelectorAll(".timeline-item.is-open").forEach((openItem) => {
-            if (openItem !== item) setTimelineOpen(openItem, false);
-          });
-          setTimelineOpen(item, true);
-          openedOnFocus = true;
-        }
+        closeOthers(item);
+        setTimelineOpen(item, true);
       });
 
       button.addEventListener("click", () => {
-        if (openedOnFocus) {
-          openedOnFocus = false;
+        const clickedOpen = item.dataset.clickedOpen === "true";
+
+        if (clickedOpen) {
+          item.dataset.clickedOpen = "false";
+          item.dataset.suppressHover = "true";
+          setTimelineOpen(item, false);
           return;
         }
 
-        const willOpen = !item.classList.contains("is-open");
-        document.querySelectorAll(".timeline-item.is-open").forEach((openItem) => {
-          if (openItem !== item) setTimelineOpen(openItem, false);
-        });
-        setTimelineOpen(item, willOpen);
+        closeOthers(item);
+        item.dataset.clickedOpen = "true";
+        item.dataset.suppressHover = "false";
+        setTimelineOpen(item, true);
       });
 
       item.addEventListener("focusout", () => {
-        openedOnFocus = false;
         window.setTimeout(() => {
-          if (!item.contains(document.activeElement)) setTimelineOpen(item, false);
+          if (!item.contains(document.activeElement) && item.dataset.clickedOpen !== "true") {
+            setTimelineOpen(item, false);
+          }
         }, 0);
       });
     });
 
     document.addEventListener("pointerdown", (event) => {
-      if (event.target.closest(".timeline-item")) return;
-      document.querySelectorAll(".timeline-item.is-open").forEach((item) => setTimelineOpen(item, false));
+      if (event.target.closest("[data-timeline-item]")) return;
+      items.forEach(closeItem);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      items.forEach(closeItem);
     });
   }
 

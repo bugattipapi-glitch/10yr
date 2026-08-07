@@ -10,6 +10,9 @@
   const winOverlay = document.getElementById("winOverlay");
   const playAgain = document.getElementById("playAgain");
   const collisionFlash = document.getElementById("collisionFlash");
+  const gameMusic = document.getElementById("gameMusic");
+  const musicToggle = document.getElementById("musicToggle");
+  const musicLabel = document.getElementById("musicLabel");
   const controls = [...document.querySelectorAll("[data-direction]")];
 
   if (!(canvas instanceof HTMLCanvasElement) || !board) return;
@@ -57,6 +60,8 @@
   let width = 0;
   let height = 0;
   let dpr = 1;
+  let musicMuted = false;
+  let resumeMusicWhenVisible = false;
 
   const laneCenters = [
     regions.roadStart + (regions.roadEnd - regions.roadStart) / 6,
@@ -68,7 +73,7 @@
     {
       type: "roadrunner",
       lane: 0,
-      y: -0.12,
+      y: 0.15,
       speed: 0.255,
       widthRatio: 0.08,
       minWidth: 52,
@@ -80,7 +85,7 @@
     {
       type: "roadrunner",
       lane: 0,
-      y: -0.65,
+      y: 0.72,
       speed: 0.215,
       widthRatio: 0.08,
       minWidth: 52,
@@ -92,7 +97,7 @@
     {
       type: "tornado",
       lane: 1,
-      y: -0.32,
+      y: 0.34,
       speed: 0.185,
       widthRatio: 0.056,
       minWidth: 44,
@@ -104,7 +109,7 @@
     {
       type: "tornado",
       lane: 1,
-      y: -0.92,
+      y: 0.88,
       speed: 0.225,
       widthRatio: 0.056,
       minWidth: 44,
@@ -116,7 +121,7 @@
     {
       type: "hotdog",
       lane: 2,
-      y: -0.2,
+      y: 0.06,
       speed: 0.285,
       widthRatio: 0.071,
       minWidth: 40,
@@ -128,7 +133,7 @@
     {
       type: "hotdog",
       lane: 2,
-      y: -0.76,
+      y: 0.57,
       speed: 0.245,
       widthRatio: 0.071,
       minWidth: 40,
@@ -158,13 +163,50 @@
     if (bumpCount) bumpCount.textContent = String(value);
   }
 
+  function updateMusicButton(isPlaying) {
+    musicToggle?.setAttribute("aria-pressed", String(isPlaying));
+    if (musicLabel) musicLabel.textContent = isPlaying ? "Music: on" : "Music: off";
+  }
+
+  async function startMusic() {
+    if (!(gameMusic instanceof HTMLAudioElement) || musicMuted) return;
+
+    gameMusic.volume = 0.28;
+    try {
+      await gameMusic.play();
+      updateMusicButton(true);
+    } catch {
+      // Autoplay policies can still vary. The visible control remains available.
+      updateMusicButton(false);
+    }
+  }
+
+  function stopMusic(markMuted = false) {
+    if (!(gameMusic instanceof HTMLAudioElement)) return;
+    gameMusic.pause();
+    if (markMuted) musicMuted = true;
+    updateMusicButton(false);
+  }
+
+  function toggleMusic() {
+    if (!(gameMusic instanceof HTMLAudioElement)) return;
+
+    if (gameMusic.paused || musicMuted) {
+      musicMuted = false;
+      startMusic();
+    } else {
+      stopMusic(true);
+    }
+  }
+
   function resetPlayer() {
     player.x = player.startX;
     player.y = player.startY;
   }
 
   function resetObstacles() {
-    const starts = [-0.12, -0.65, -0.32, -0.92, -0.2, -0.76];
+    // Begin with two staggered obstacles already visible in every lane.
+    const starts = [0.15, 0.72, 0.34, 0.88, 0.06, 0.57];
     obstacles.forEach((obstacle, index) => {
       obstacle.y = starts[index];
     });
@@ -450,6 +492,7 @@
     showStartOverlay(false);
     showWinOverlay(false);
     setStatus("Crossing in progress. Watch the lanes.");
+    startMusic();
     canvas.focus({ preventScroll: true });
     previousTime = performance.now();
   }
@@ -563,14 +606,21 @@
     if (document.hidden) {
       pausedAt = performance.now();
       stopControlRepeat();
+      resumeMusicWhenVisible = gameMusic instanceof HTMLAudioElement && !gameMusic.paused && !musicMuted;
+      if (resumeMusicWhenVisible) stopMusic(false);
     } else {
       previousTime += performance.now() - pausedAt;
+      if (resumeMusicWhenVisible) startMusic();
+      resumeMusicWhenVisible = false;
     }
   });
 
   startButton?.addEventListener("click", startGame);
   playAgain?.addEventListener("click", startGame);
+  musicToggle?.addEventListener("click", toggleMusic);
 
+  if (gameMusic instanceof HTMLAudioElement) gameMusic.volume = 0.28;
+  updateMusicButton(false);
   resizeCanvas();
   window.requestAnimationFrame(loop);
 })();
